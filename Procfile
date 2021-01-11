@@ -1,1 +1,1 @@
-web: gunicorn Inference_server.py:app
+web: gunicorn Inference_server:app
