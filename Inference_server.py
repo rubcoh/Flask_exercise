@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 
-pkl_filename = "/Users/ruben/Desktop/pickle_model.pkl"
+pkl_filename = "pickle_model.pkl"
 with open(pkl_filename, 'rb') as file:
     pickle_model = pickle.load(file)
 
@@ -38,7 +38,7 @@ def predict():
     load_model = request.args.get('load_model')
 
     if load_model:
-        pkl_filename = "/Users/ruben/Desktop/pickle_model.pkl"
+        pkl_filename = "pickle_model.pkl"
         with open(pkl_filename, 'rb') as file:
             pickle_model = pickle.load(file)
 
@@ -68,4 +68,8 @@ def json_predict():
 
 if __name__ == '__main__':
     port = os.environ.get('PORT')
-    app.run(host='0.0.0.0', port=int(port))
+
+    if port:
+        app.run(host='0.0.0.0', port=int(port))
+    else:
+        app.run()
