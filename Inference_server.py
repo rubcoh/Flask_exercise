@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect, url_for, flash, jsonify
 import pickle
 import pandas as pd
+import os
 
 app = Flask(__name__)
 
@@ -66,4 +67,5 @@ def json_predict():
 
 
 if __name__ == '__main__':
-    app.run(port=2000, debug=True)
+    port = os.environ.get('PORT')
+    app.run(host='0.0.0.0', port=int(port))
